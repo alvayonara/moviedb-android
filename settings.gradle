@@ -14,3 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "moviedb-android"
 include ':app'
+include ':common'
+include ':commontest'
+include ':core:network'
+include ':core:navigation'
+include ':feature:home'
+include ':feature:detail'
