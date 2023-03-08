@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+apply from: '../../shared_dependencies.gradle'
+
+def baseURLPropertiesFile = rootProject.file("baseurl.properties")
+def baseURLProperties = new Properties()
+baseURLProperties.load(new FileInputStream(baseURLPropertiesFile))
+
+def apiKeyPropertiesFile = rootProject.file("apikey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        buildConfigField "String", "BASE_URL", baseURLProperties['BASE_URL']
+        buildConfigField "String", "API_KEY", apiKeyProperties['API_KEY']
+    }
+}
+
+dependencies {
+    implementation project(":commontest")
+
+    // Chucker
+    debugImplementation "com.github.chuckerteam.chucker:library:$chuckerVersion"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:$chuckerVersion"
+}

@@ -1,0 +1,19 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+apply from: '../shared_dependencies.gradle'
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+    }
+}
+
+dependencies {
+    implementation project(":core:navigation")
+}
