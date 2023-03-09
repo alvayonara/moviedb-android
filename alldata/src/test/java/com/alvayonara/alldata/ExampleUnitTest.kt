@@ -1,4 +1,4 @@
-package com.alvayonara.network
+package com.alvayonara.alldata
 
 import org.junit.Test
 
