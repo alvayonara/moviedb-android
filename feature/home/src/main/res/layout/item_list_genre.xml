@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_poster"
-        android:layout_width="95dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:elevation="0dp"
         app:cardBackgroundColor="@color/cerulean"
