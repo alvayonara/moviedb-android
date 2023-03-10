@@ -29,28 +29,11 @@ class DetailViewModel @Inject constructor(
 ) : ViewModel() {
     private val _compositeDisposable by lazy { CompositeDisposable() }
 
-    private val _navigation = MutableLiveData<Event<NavigationCommand>>()
-    val navigation: LiveData<Event<NavigationCommand>> = _navigation
-
     private val _detail = MutableLiveData<DetailEvent>()
     val detail: LiveData<DetailEvent> = _detail
 
     private val _reviewNext = MutableLiveData<ReviewNextEvent>()
     val reviewNext: LiveData<ReviewNextEvent> = _reviewNext
-
-    /**
-     * Used to handle navigation from [ViewModel]
-     */
-    fun navigate(directions: NavDirections) {
-        this._navigation.value = Event(NavigationCommand.To(directions))
-    }
-
-    /**
-     * Used to back to previous fragment from [ViewModel]
-     */
-    fun navigateBack() {
-        this._navigation.value = Event(NavigationCommand.Back)
-    }
 
     fun getDetail(movieId: String) {
         val disposable = Observable.zip(

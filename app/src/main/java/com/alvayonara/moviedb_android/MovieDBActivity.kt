@@ -28,7 +28,6 @@ class MovieDBActivity : AppCompatActivity(), Navigator {
     }
 
     override fun goto(uri: Uri) {
-        navController.navigate(uri)
         val request = NavDeepLinkRequest.Builder
             .fromUri(uri)
             .build()

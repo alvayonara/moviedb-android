@@ -9,5 +9,6 @@
         android:id="@+id/moviesFragment"
         android:name="com.alvayonara.movies.ui.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies"
+        app:popUpToInclusive="true"/>
 </navigation>

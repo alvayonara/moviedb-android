@@ -9,5 +9,6 @@
         android:id="@+id/detailFragment"
         android:name="com.alvayonara.detail.ui.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail"
+        app:popUpToInclusive="true"/>
 </navigation>

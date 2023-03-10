@@ -9,3 +9,7 @@ apply from: '../../shared_dependencies.gradle'
 android {
     compileSdk 33
 }
+
+dependencies {
+    implementation project(":common")
+}

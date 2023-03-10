@@ -19,7 +19,3 @@ android {
         buildConfigField "String", "POSTER_URL", baseURLProperties['POSTER_URL']
     }
 }
-
-dependencies {
-    implementation project(":core:navigation")
-}

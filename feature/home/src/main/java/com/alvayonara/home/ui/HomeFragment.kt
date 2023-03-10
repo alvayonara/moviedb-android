@@ -1,16 +1,12 @@
 package com.alvayonara.home.ui
 
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvayonara.common.extension.gone
 import com.alvayonara.common.extension.visible
@@ -18,9 +14,8 @@ import com.alvayonara.common.moviedomain.MovieType
 import com.alvayonara.common.utils.ViewModelFactory
 import com.alvayonara.home.di.HomeComponent
 import com.alvayonara.home.ui.HomeViewModel.HomeEvent
-import com.alvayonara.moviedb_android.home.R
-import com.alvayonara.moviedb_android.network.R.navigation
 import com.alvayonara.moviedb_android.home.databinding.FragmentHomeBinding
+import com.alvayonara.moviedb_android.navigation.R.navigation
 import com.alvayonara.navigation.Navigator
 import javax.inject.Inject
 
@@ -56,27 +51,17 @@ class HomeFragment : Fragment() {
     private fun setupRecyclerView() {
         val clickListener = object : HomeAdapter.OnClickListener {
             override fun onClickMovie(movieId: String) {
-                println("check click -> $movieId")
-
-                val uri =  Uri.Builder().scheme("myApp")
-                    .authority("com.alvayonara")
-                    .path("/$movieId")
-                    .build()
-                val request = NavDeepLinkRequest.Builder
-                    .fromUri(uri)
-                    .build()
-
-                println("check click final -> $request")
-
-                (requireActivity() as Navigator).goto(Uri.parse("myApp://detail/$movieId"), navigation.main_navigation)
-
-//                findNavController().navigate(request)
+                (requireActivity() as Navigator).goto(
+                    Uri.parse("myApp://detail/$movieId"),
+                    navigation.main_navigation
+                )
             }
 
             override fun onShowMore(movieType: MovieType) {
-                (requireActivity() as Navigator).goto(Uri.parse("myApp://detail/$movieType"), navigation.main_navigation)
-
-//                findNavController().navigate(setNavDeeplinkRequest(MOVIES_DEEPLINK + movieType))
+                (requireActivity() as Navigator).goto(
+                    Uri.parse("myApp://detail/$movieType"),
+                    navigation.main_navigation
+                )
             }
         }
 
