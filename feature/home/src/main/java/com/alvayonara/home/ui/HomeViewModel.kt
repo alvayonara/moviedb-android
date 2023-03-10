@@ -3,14 +3,10 @@ package com.alvayonara.home.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavDirections
-import com.alvayonara.common.utils.Event
 import com.alvayonara.home.HomeData
 import com.alvayonara.home.usecase.GetDiscoverMovieListUseCase
 import com.alvayonara.home.usecase.GetGenreListUseCase
 import com.alvayonara.home.usecase.GetTrendingMovieListUseCase
-import com.alvayonara.navigation.NavigationCommand
-import com.alvayonara.navigation.NavigationCommand.To
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -24,21 +20,11 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
     private val _compositeDisposable by lazy { CompositeDisposable() }
 
-    private val _navigation = MutableLiveData<Event<NavigationCommand>>()
-    val navigation: LiveData<Event<NavigationCommand>> = _navigation
-
     private val _home = MutableLiveData<HomeEvent>()
     val home: LiveData<HomeEvent> = _home
 
     init {
         getHomeData()
-    }
-
-    /**
-     * Used to handle navigation from [ViewModel]
-     */
-    fun navigate(directions: NavDirections) {
-        this._navigation.value = Event(To(directions))
     }
 
     fun getHomeData() {

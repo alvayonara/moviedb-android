@@ -11,7 +11,7 @@
 
         <deepLink
             android:id="@+id/deepLink_home"
-            app:uri="myApp://home" />
+            app:uri="movieDB://home" />
     </fragment>
 
     <fragment
@@ -24,7 +24,7 @@
             app:argType="com.alvayonara.common.moviedomain.MovieType" />
         <deepLink
             android:id="@+id/deepLink_movies"
-            app:uri="myApp://movies/{movieType}" />
+            app:uri="movieDB://movies/{movieType}" />
     </fragment>
 
     <fragment
@@ -37,6 +37,6 @@
             app:argType="string" />
         <deepLink
             android:id="@+id/deepLink_detail"
-            app:uri="myApp://detail/{movieType}" />
+            app:uri="movieDB://detail/{movieType}" />
     </fragment>
 </navigation>

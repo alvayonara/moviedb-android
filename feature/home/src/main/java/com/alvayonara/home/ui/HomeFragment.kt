@@ -16,7 +16,10 @@ import com.alvayonara.home.di.HomeComponent
 import com.alvayonara.home.ui.HomeViewModel.HomeEvent
 import com.alvayonara.moviedb_android.home.databinding.FragmentHomeBinding
 import com.alvayonara.moviedb_android.navigation.R.navigation
+import com.alvayonara.navigation.DeeplinkType.DETAIL
+import com.alvayonara.navigation.DeeplinkType.MOVIES
 import com.alvayonara.navigation.Navigator
+import com.alvayonara.navigation.generateDeeplinkUri
 import javax.inject.Inject
 
 class HomeFragment : Fragment() {
@@ -52,14 +55,14 @@ class HomeFragment : Fragment() {
         val clickListener = object : HomeAdapter.OnClickListener {
             override fun onClickMovie(movieId: String) {
                 (requireActivity() as Navigator).goto(
-                    Uri.parse("myApp://detail/$movieId"),
+                    generateDeeplinkUri(DETAIL, movieId),
                     navigation.main_navigation
                 )
             }
 
             override fun onShowMore(movieType: MovieType) {
                 (requireActivity() as Navigator).goto(
-                    Uri.parse("myApp://detail/$movieType"),
+                    generateDeeplinkUri(MOVIES, movieType),
                     navigation.main_navigation
                 )
             }
