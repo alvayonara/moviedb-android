@@ -18,7 +18,7 @@ import com.alvayonara.moviedb_android.home.databinding.LayoutHomeMovieBinding
 class HomeAdapter(
     private val clickListener: OnClickListener
 ) : ListAdapter<HomeView, ViewHolder>(HomeDiffCallback()) {
-    
+
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
             is TopView         -> ViewType.TOP_VIEW.ordinal
@@ -74,12 +74,14 @@ class HomeAdapter(
 
         init {
             binding.rvGenre.apply {
+                adapter = genreAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 itemAnimator = null
             }
         }
 
         fun bind(data: GenreSection) {
+            println("genres->: ${data}")
             genreAdapter.submitList(data.genreViews)
         }
     }
@@ -92,6 +94,7 @@ class HomeAdapter(
 
         init {
             binding.rvMovie.apply {
+                adapter = discoverMovieAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 itemAnimator = null
             }
@@ -115,6 +118,7 @@ class HomeAdapter(
 
         init {
             binding.rvMovie.apply {
+                adapter = trendingMovieAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 itemAnimator = null
             }

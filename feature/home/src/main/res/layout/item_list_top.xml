@@ -37,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_profile"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/dummy_text_greetings" />
+        android:text="@string/dummy_text_greetings" />
 
     <TextView
         android:id="@+id/tv_name"
@@ -55,5 +55,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_profile"
         app:layout_constraintTop_toBottomOf="@+id/tv_greetings"
-        tools:text="@string/dummy_text_name" />
+        android:text="@string/dummy_text_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

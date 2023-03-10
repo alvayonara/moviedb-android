@@ -20,7 +20,7 @@
             android:id="@+id/iv_poster"
             android:layout_width="154dp"
             android:layout_height="100dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
     </androidx.cardview.widget.CardView>
 

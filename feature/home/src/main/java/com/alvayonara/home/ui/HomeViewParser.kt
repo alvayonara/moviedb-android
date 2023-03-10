@@ -22,7 +22,7 @@ class HomeViewParser(
         discover: List<Result>,
         trending: List<Result>,
         genre: List<GenreData>
-    ) {
+    ): List<HomeView> {
         val result = mutableListOf<HomeView>()
 
         result.add(TopView)
@@ -45,12 +45,14 @@ class HomeViewParser(
                 trendingViews = generateTrending(trending),
             )
         )
+
+        return result
     }
 
     private fun generateGenre(genreList: List<GenreData>): List<GenreViews> {
         val result = mutableListOf<GenreViews>()
         result.addAll(genreList.map {
-            GenreView(it.name, it.id.toString())
+            GenreView(it.id.toString(), it.name)
         })
 
         return result
@@ -59,7 +61,7 @@ class HomeViewParser(
     private fun generateDiscover(discoverList: List<Result>): List<DiscoverViews> {
         val result = mutableListOf<DiscoverViews>()
         result.addAll(discoverList.map {
-            DiscoverView(it.title, it.posterPath, it.id.toString())
+            DiscoverView(it.id.toString(), it.title, it.backdropPath)
         })
 
         return result
@@ -68,7 +70,7 @@ class HomeViewParser(
     private fun generateTrending(trendingList: List<Result>): List<TrendingViews> {
         val result = mutableListOf<TrendingViews>()
         result.addAll(trendingList.map {
-            TrendingView(it.title, it.posterPath, it.id.toString())
+            TrendingView(it.id.toString(), it.title, it.backdropPath)
         })
 
         return result

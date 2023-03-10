@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movies_nav_graph"
+    app:startDestination="@id/navigation_movies">
+
+    <fragment
+        android:id="@+id/navigation_movies"
+        android:name="com.alvayonara.movies.ui.MoviesFragment"
+        android:label="MoviesFragment"
+        tools:layout="@layout/fragment_movies">
+
+        <argument
+            android:name="movieType"
+            app:argType="com.alvayonara.common.moviedomain.MovieType" />
+
+        <deepLink app:uri="moviedb://com.alvayonara.moviedb_android/movies/{movieType}" />
+    </fragment>
+</navigation>
