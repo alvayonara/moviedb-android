@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.alvayonara.home.ui.HomeFragment"
+        android:label="home">
+
+        <deepLink
+            android:id="@+id/deepLink_home"
+            app:uri="myApp://home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.alvayonara.movies.ui.MoviesFragment"
+        android:label="movies">
+
+        <argument
+            android:name="movieType"
+            app:argType="com.alvayonara.common.moviedomain.MovieType" />
+        <deepLink
+            android:id="@+id/deepLink_movies"
+            app:uri="myApp://movies/{movieType}" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.alvayonara.detail.ui.DetailFragment"
+        android:label="detail">
+
+        <argument
+            android:name="movieId"
+            app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink_detail"
+            app:uri="myApp://detail/{movieType}" />
+    </fragment>
+</navigation>

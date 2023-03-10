@@ -5,15 +5,17 @@ plugins {
 }
 apply from: '../shared_dependencies.gradle'
 
+def baseURLPropertiesFile = rootProject.file("baseurl.properties")
+def baseURLProperties = new Properties()
+baseURLProperties.load(new FileInputStream(baseURLPropertiesFile))
+
 android {
     compileSdk 33
 
     defaultConfig {
         minSdk 24
         targetSdk 33
-    }
-}
 
-dependencies {
-    implementation project(":core:navigation")
+        buildConfigField "String", "POSTER_URL", baseURLProperties['POSTER_URL']
+    }
 }

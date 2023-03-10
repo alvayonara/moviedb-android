@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_home">Home</string>
+    <string name="title_genre">Genre</string>
+    <string name="title_discover">Discover</string>
+    <string name="title_trending">Trending</string>
+    <string name="header_discover">Header Discover</string>
+    <string name="header_trending">Header Trending</string>
+
+    <string name="dummy_text_name">Alva Yonara Puramandya</string>
+    <string name="dummy_text_greetings">Good Morning,</string>
+    <string name="show_more">Show more</string>
+
+    <string name="subtitle_discover">Lots of interesting movie here</string>
+    <string name="subtitle_trending">Don\'t miss this week\'s trending</string>
+</resources>

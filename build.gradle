@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     dependencies {
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1"
     }
 
     repositories {
@@ -35,8 +35,8 @@ ext {
     gsonVersion = '2.9.0'
     activityKtxVersion = '1.4.0'
     fragmentKtxVersion = '1.4.1'
-    navigationFragmentVersion = '2.4.1'
-    navigationUiVersion = '2.4.1'
+    navigationFragmentVersion = '2.3.5'
+    navigationUiVersion = '2.3.5'
     lifecycleVersion = '2.2.0'
     lifecycleExtensionVersion = '2.2.0'
     daggerVersion = '2.40.5'
