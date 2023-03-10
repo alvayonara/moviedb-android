@@ -17,7 +17,8 @@
         android:clipToPadding="false"
         android:fillViewport="true"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/spacing_mxlarge"
+        android:paddingLeft="@dimen/spacing_mxlarge"
+        android:paddingRight="16dp"
         android:paddingBottom="@dimen/spacing_middle"
         android:scrollbars="none"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -25,5 +26,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_header"
+        android:layout_marginBottom="@dimen/spacing_large"
         tools:listitem="@layout/item_list_movie" />
 </androidx.constraintlayout.widget.ConstraintLayout>

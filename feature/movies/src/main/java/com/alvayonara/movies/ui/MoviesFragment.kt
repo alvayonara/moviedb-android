@@ -17,6 +17,8 @@ class MoviesFragment : Fragment() {
     lateinit var factory: ViewModelFactory<MoviesViewModel>
     private val viewModel by viewModels<MoviesViewModel> { factory }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MoviesComponent.component.inject(this)

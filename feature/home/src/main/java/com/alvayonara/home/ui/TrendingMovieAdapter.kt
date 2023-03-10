@@ -10,6 +10,7 @@ import com.alvayonara.home.ui.TrendingViews.TrendingView
 import com.alvayonara.moviedb_android.common.BuildConfig
 import com.alvayonara.moviedb_android.home.databinding.ItemListMovieBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class TrendingMovieAdapter(
     private val clickListener: HomeAdapter.OnClickListener
@@ -29,6 +30,7 @@ class TrendingMovieAdapter(
         fun bind(data: TrendingView) {
             Glide.with(itemView.context)
                 .load(BuildConfig.POSTER_URL + data.poster)
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivPoster)
             binding.tvTitle.text = data.title
             binding.cvPoster.setOnClickListener {
