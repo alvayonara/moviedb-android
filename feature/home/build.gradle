@@ -26,6 +26,8 @@ dependencies {
     implementation project(":commontest")
     implementation project(":core:network")
     implementation project(":core:navigation")
+    implementation project(":feature:detail")
+    implementation project(":feature:movies")
 
     // Lifecycle
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"

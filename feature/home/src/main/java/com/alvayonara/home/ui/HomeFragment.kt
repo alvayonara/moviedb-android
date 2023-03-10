@@ -54,11 +54,11 @@ class HomeFragment : Fragment() {
     private fun setupRecyclerView() {
         val clickListener = object : HomeAdapter.OnClickListener {
             override fun onClickMovie(movieId: String) {
-//                findNavController().navigate(setNavDeeplinkRequest(DETAIL_DEEPLINK + movieId))
+                findNavController().navigate(setNavDeeplinkRequest(DETAIL_DEEPLINK + movieId))
             }
 
             override fun onShowMore(movieType: MovieType) {
-//                findNavController().navigate(setNavDeeplinkRequest(MOVIES_DEEPLINK + movieType))
+                findNavController().navigate(setNavDeeplinkRequest(MOVIES_DEEPLINK + movieType))
             }
         }
 

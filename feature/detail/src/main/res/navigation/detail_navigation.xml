@@ -15,6 +15,6 @@
             android:name="movieId"
             app:argType="String" />
 
-        <deepLink app:uri="moviedb://com.alvayonara.moviedb_android/detail/{movieId}" />
+        <deepLink app:uri="moviedb://detail/{movieId}" />
     </fragment>
 </navigation>

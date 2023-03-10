@@ -11,6 +11,6 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
-        <deepLink app:uri="moviedb://com.alvayonara.moviedb_android/home" />
+        <deepLink app:uri="moviedb://home" />
     </fragment>
 </navigation>

@@ -24,6 +24,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <nav-graph android:value="@navigation/home_navigation" />
+            <nav-graph android:value="@navigation/detail_navigation" />
+            <nav-graph android:value="@navigation/movies_navigation" />
+
         </activity>
     </application>
 </manifest>
