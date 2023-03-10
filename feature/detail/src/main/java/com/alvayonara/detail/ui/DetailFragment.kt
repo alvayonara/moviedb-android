@@ -20,19 +20,16 @@ class DetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DetailComponent.component.inject(this)
-        println("log oncreate")
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        println("log oncreateview")
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println("log onviewcreated")
     }
 }

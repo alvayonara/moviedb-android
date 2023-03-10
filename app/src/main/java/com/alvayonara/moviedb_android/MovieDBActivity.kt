@@ -23,21 +23,10 @@ class MovieDBActivity : AppCompatActivity(), Navigator {
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
     }
 
-    override fun goto(destination: Int) {
-        navController.navigate(destination)
-    }
-
     override fun goto(uri: Uri) {
         val request = NavDeepLinkRequest.Builder
             .fromUri(uri)
             .build()
         navController.navigate(request)
-    }
-
-    override fun graphSpecificNavigation(graphId: Int) {
-        val myNavHostFragment: NavHostFragment = navHostFragment
-        val inflater = myNavHostFragment.navController.navInflater
-        val graph = inflater.inflate(graphId)
-        navController.graph.addAll(graph)
     }
 }
