@@ -50,6 +50,7 @@ sealed class DiscoverViews(
 ) {
     data class DiscoverView(
         override val id: String,
+        val movieId: Int,
         val title: String,
         val poster: String
     ) : DiscoverViews(id)
@@ -60,6 +61,7 @@ sealed class TrendingViews(
 ) {
     data class TrendingView(
         override val id: String,
+        val movieId: Int,
         val title: String,
         val poster: String
     ) : TrendingViews(id)

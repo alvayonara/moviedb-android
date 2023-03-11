@@ -148,7 +148,7 @@ class HomeAdapter(
     }
 
     interface OnClickListener {
-        fun onClickMovie(movieId: String)
+        fun onClickMovie(movieId: Int)
         fun onShowMore(movieType: MovieType)
     }
 }

@@ -7,6 +7,14 @@
     android:background="@color/woodsmoke"
     android:paddingHorizontal="@dimen/spacing_mxlarge">
 
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rv_review"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_overview_top"
         android:layout_width="match_parent"

@@ -32,6 +32,8 @@ sealed class DetailView(
 
     data class ReviewSection(
         override val id: String,
+        val movieId: Int,
+        val totalPages: Int,
         val reviewViews: List<ReviewViews>
     ) : DetailView(id)
 }

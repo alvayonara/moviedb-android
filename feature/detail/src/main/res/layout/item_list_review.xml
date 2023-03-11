@@ -64,20 +64,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_large"
         android:layout_marginTop="@dimen/spacing_middle"
+        android:layout_marginRight="7dp"
         android:fontFamily="@font/nunitosans_regular"
         android:lineSpacingExtra="4dp"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_12sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_review_author"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_review_avatar"
         app:layout_constraintTop_toBottomOf="@+id/tv_review_author"
         tools:text="Lorem Ipsum" />
 
     <View
+        android:id="@+id/view_separator"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/spacing_middle"
-        android:background="@color/white"
+        android:background="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_review_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_review_content" />

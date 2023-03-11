@@ -121,6 +121,7 @@ class MoviesAdapter(
     internal fun hideLoading() {
         isLoadMore = false
         _movies.remove(_movies.last())
+
         notifyItemChanged(_movies.size)
     }
 

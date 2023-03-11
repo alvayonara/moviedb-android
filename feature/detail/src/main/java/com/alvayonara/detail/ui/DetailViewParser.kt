@@ -29,7 +29,7 @@ class DetailViewParser(
                 id = "Content",
                 title = movieDetail.title,
                 releaseDate = movieDetail.releaseDate,
-                rating = movieDetail.popularity,
+                rating = movieDetail.voteAverage,
                 poster = movieDetail.backdropPath
             )
         )
@@ -48,19 +48,19 @@ class DetailViewParser(
             )
         )
 
-        if (movieDetail.video) {
-            result.add(
-                VideoView(
-                    id = "Video",
-                    key = video.key
-                )
+        result.add(
+            VideoView(
+                id = "Video",
+                key = video.key
             )
-        }
+        )
 
         if (review.totalPages != 0) {
             result.add(
                 ReviewSection(
                     id = "Review",
+                    movieId = review.id,
+                    totalPages = review.totalPages,
                     reviewViews = generateReview(review.results)
                 )
             )

@@ -34,7 +34,7 @@ class DiscoverMovieAdapter(
                 .into(binding.ivPoster)
             binding.tvTitle.text = data.title
             binding.cvPoster.setOnClickListener {
-                clickListener.onClickMovie(data.id)
+                clickListener.onClickMovie(data.movieId)
             }
         }
     }
