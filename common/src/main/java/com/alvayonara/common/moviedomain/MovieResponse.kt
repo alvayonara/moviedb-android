@@ -1,6 +1,5 @@
 package com.alvayonara.common.moviedomain
 
-
 import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(

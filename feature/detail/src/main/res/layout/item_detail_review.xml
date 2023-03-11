@@ -28,18 +28,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_show_all_reviews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunitosans_semibold"
-            android:text="@string/show_all_reviews"
-            android:textColor="@color/cerulean"
-            android:textSize="@dimen/text_size_12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_header_review"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_header_review" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_review"
             android:layout_width="match_parent"

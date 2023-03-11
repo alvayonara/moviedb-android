@@ -9,13 +9,12 @@ import com.alvayonara.common.extension.gone
 import com.alvayonara.detail.ui.ReviewAdapter.ReviewViewHolder
 import com.alvayonara.detail.ui.ReviewViews.ReviewView
 import com.alvayonara.moviedb_android.common.BuildConfig
+import com.alvayonara.moviedb_android.detail.R
 import com.alvayonara.moviedb_android.detail.databinding.ItemListReviewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
-class ReviewAdapter(
-    private val clickListener: DetailAdapter.OnClickListener
-) : ListAdapter<ReviewViews, ReviewViewHolder>(DiscoverMovieDiffCallback()) {
+class ReviewAdapter : ListAdapter<ReviewViews, ReviewViewHolder>(ReviewDiffCallback()) {
 
     private var _reviewList = listOf<ReviewViews>()
 
@@ -39,6 +38,7 @@ class ReviewAdapter(
                 Glide.with(itemView.context)
                     .load(BuildConfig.POSTER_URL + data.avatar)
                     .transition(DrawableTransitionOptions.withCrossFade())
+                    .placeholder(R.drawable.ic_avatar)
                     .into(ivReviewAvatar)
                 tvReviewAuthor.text = data.author
                 tvReviewRating.text = data.rating.toString()
@@ -50,7 +50,7 @@ class ReviewAdapter(
         }
     }
 
-    class DiscoverMovieDiffCallback : DiffUtil.ItemCallback<ReviewViews>() {
+    class ReviewDiffCallback : DiffUtil.ItemCallback<ReviewViews>() {
         override fun areItemsTheSame(oldItem: ReviewViews, newItem: ReviewViews): Boolean {
             return oldItem.id == newItem.id
         }

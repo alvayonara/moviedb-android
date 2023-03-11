@@ -60,13 +60,6 @@ class DetailFragment : Fragment() {
             override fun onBack() {
                 findNavController().navigateUp()
             }
-
-            override fun onShowMoreReview(movieId: Int) {
-//                (requireActivity() as Navigator).goto(
-//                    generateDeeplinkUri(MOVIES, movieId),
-//                    navigation.main_navigation
-//                )
-            }
         }
 
         detailAdapter = DetailAdapter(clickListener)

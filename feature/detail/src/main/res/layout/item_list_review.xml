@@ -12,13 +12,12 @@
         android:layout_width="@dimen/circle_image_size"
         android:layout_height="@dimen/circle_image_size"
         android:scaleType="centerCrop"
-        android:src="@drawable/alva_yonara_puramandya"
+        android:src="@drawable/ic_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ImageStyle_Circle"
         app:strokeColor="@color/white"
-        app:strokeWidth="1dp"
-        tools:src="@drawable/alva_yonara_puramandya" />
+        app:strokeWidth="1dp" />
 
     <TextView
         android:id="@+id/tv_review_author"
@@ -64,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_large"
         android:layout_marginTop="@dimen/spacing_middle"
+        android:justificationMode="inter_word"
         android:layout_marginRight="7dp"
         android:fontFamily="@font/nunitosans_regular"
         android:lineSpacingExtra="4dp"

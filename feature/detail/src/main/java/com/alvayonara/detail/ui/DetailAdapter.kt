@@ -174,21 +174,17 @@ class DetailAdapter(
     inner class ReviewViewHolder(
         private val binding: ItemDetailReviewBinding
     ) : ViewHolder(binding.root) {
-        private val reviewAdapter = ReviewAdapter(clickListener)
+        private val reviewAdapter = ReviewAdapter()
 
         init {
             binding.rvReview.apply {
                 adapter = reviewAdapter
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 itemAnimator = null
             }
         }
 
         fun bind(data: ReviewSection) {
-            if (data.totalPages <= 1) {
-                binding.tvShowAllReviews.gone()
-            }
-            binding.tvShowAllReviews.setOnClickListener { clickListener.onShowMoreReview(data.movieId) }
             reviewAdapter.setReview(data.reviewViews)
             reviewAdapter.submitList(data.reviewViews)
         }
@@ -210,6 +206,5 @@ class DetailAdapter(
 
     interface OnClickListener {
         fun onBack()
-        fun onShowMoreReview(movieId: Int)
     }
 }
