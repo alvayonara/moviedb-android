@@ -32,10 +32,19 @@ sealed class DetailView(
 
     data class ReviewSection(
         override val id: String,
+        val review: List<ReviewDatas>
+    ) : DetailView(id)
+}
+
+sealed class ReviewDatas(
+    open val id: String
+) {
+    data class ReviewData(
+        override val id: String,
         val movieId: Int,
         val totalPages: Int,
         val reviewViews: List<ReviewViews>
-    ) : DetailView(id)
+    ) : ReviewDatas(id)
 }
 
 sealed class ReviewViews(

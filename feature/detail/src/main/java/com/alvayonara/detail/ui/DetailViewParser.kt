@@ -9,6 +9,7 @@ import com.alvayonara.detail.ui.DetailView.OverView
 import com.alvayonara.detail.ui.DetailView.ReviewSection
 import com.alvayonara.detail.ui.DetailView.TopView
 import com.alvayonara.detail.ui.DetailView.VideoView
+import com.alvayonara.detail.ui.ReviewDatas.ReviewData
 import com.alvayonara.detail.ui.ReviewViews.ReviewView
 import com.alvayonara.detail.video.Result
 import com.alvayonara.detail.review.Result as ResultReview
@@ -59,12 +60,28 @@ class DetailViewParser(
             result.add(
                 ReviewSection(
                     id = "Review",
-                    movieId = review.id,
-                    totalPages = review.totalPages,
-                    reviewViews = generateReview(review.results)
+                    review = generateReviewData(review.id, review.totalPages, review.results)
                 )
             )
         }
+
+        return result
+    }
+
+    private fun generateReviewData(
+        movieId: Int,
+        totalPages: Int,
+        reviewResult: List<ResultReview>
+    ): List<ReviewDatas> {
+        val result = mutableListOf<ReviewData>()
+        result.add(
+            ReviewData(
+                id = "Review Data",
+                movieId = movieId,
+                totalPages = totalPages,
+                reviewViews = generateReview(reviewResult)
+            )
+        )
 
         return result
     }

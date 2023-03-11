@@ -23,6 +23,7 @@ import com.alvayonara.moviedb_android.detail.databinding.ItemDetailOverviewBindi
 import com.alvayonara.moviedb_android.detail.databinding.ItemDetailReviewBinding
 import com.alvayonara.moviedb_android.detail.databinding.ItemDetailTopBinding
 import com.alvayonara.moviedb_android.detail.databinding.ItemDetailVideoBinding
+import com.alvayonara.moviedb_android.detail.databinding.LayoutReviewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants.PlaybackQuality
@@ -67,7 +68,7 @@ class DetailAdapter(
                 ItemDetailVideoBinding.inflate(layoutInflater, parent, false)
             )
             ViewType.REVIEW_SECTION.ordinal   -> ReviewViewHolder(
-                ItemDetailReviewBinding.inflate(layoutInflater, parent, false)
+                LayoutReviewBinding.inflate(layoutInflater, parent, false)
             )
             else                              -> throw IllegalArgumentException("ViewType is not recognized")
         }
@@ -172,25 +173,21 @@ class DetailAdapter(
     }
 
     inner class ReviewViewHolder(
-        private val binding: ItemDetailReviewBinding
+        private val binding: LayoutReviewBinding
     ) : ViewHolder(binding.root) {
-        private val reviewAdapter = ReviewAdapter(clickListener)
+        private val reviewDataAdapter = ReviewDataAdapter(clickListener)
 
         init {
             binding.rvReview.apply {
-                adapter = reviewAdapter
+                adapter = reviewDataAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 itemAnimator = null
             }
         }
 
         fun bind(data: ReviewSection) {
-            if (data.totalPages <= 1) {
-                binding.tvShowAllReviews.gone()
-            }
-            binding.tvShowAllReviews.setOnClickListener { clickListener.onShowMoreReview(data.movieId) }
-            reviewAdapter.setReview(data.reviewViews)
-            reviewAdapter.submitList(data.reviewViews)
+//            reviewDataAdapter.setReview(data.review.first())
+            reviewDataAdapter.submitList(data.review)
         }
     }
 

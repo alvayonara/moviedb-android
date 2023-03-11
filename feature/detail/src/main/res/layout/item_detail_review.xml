@@ -2,54 +2,48 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_overview_top"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/woodsmoke"
-    android:paddingHorizontal="@dimen/spacing_mxlarge">
+    android:background="@drawable/bg_shark_rounded_20dp"
+    android:paddingHorizontal="@dimen/spacing_smlarge"
+    android:paddingTop="@dimen/spacing_smlarge"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_overview_top"
+    <TextView
+        android:id="@+id/tv_header_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunitosans_extrabold"
+        android:text="@string/review"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_show_all_reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunitosans_semibold"
+        android:text="@string/show_all_reviews"
+        android:textColor="@color/cerulean"
+        android:textSize="@dimen/text_size_12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_header_review"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_header_review" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_review"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/bg_shark_rounded_20dp"
-        android:padding="@dimen/spacing_smlarge"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/spacing_mlarge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_header_review"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunitosans_extrabold"
-            android:text="@string/review"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_show_all_reviews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunitosans_semibold"
-            android:text="@string/show_all_reviews"
-            android:textColor="@color/cerulean"
-            android:textSize="@dimen/text_size_12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_header_review"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_header_review" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_review"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="15dp"
-            android:nestedScrollingEnabled="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.555"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_header_review"
-            tools:listitem="@layout/item_list_review" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tv_header_review"
+        tools:listitem="@layout/item_list_review" />
 </androidx.constraintlayout.widget.ConstraintLayout>
