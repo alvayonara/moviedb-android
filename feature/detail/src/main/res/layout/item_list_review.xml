@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/shark"
+    android:paddingVertical="@dimen/spacing_middle">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_review_avatar"
+        android:layout_width="@dimen/circle_image_size"
+        android:layout_height="@dimen/circle_image_size"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ImageStyle_Circle"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp" />
+
+    <TextView
+        android:id="@+id/tv_review_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:fontFamily="@font/nunitosans_extrabold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_rating"
+        app:layout_constraintStart_toEndOf="@+id/iv_review_avatar"
+        app:layout_constraintTop_toTopOf="@+id/iv_review_avatar"
+        tools:text="Alva Yonara Puramandya" />
+
+    <ImageView
+        android:id="@+id/iv_rating"
+        android:layout_width="@dimen/spacing_large"
+        android:layout_height="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_small"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_review_rating"
+        app:layout_constraintEnd_toStartOf="@+id/tv_review_rating"
+        app:layout_constraintTop_toTopOf="@+id/tv_review_rating"
+        app:srcCompat="@drawable/ic_star"
+        app:tint="@color/yellow_700" />
+
+    <TextView
+        android:id="@+id/tv_review_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_xmedium"
+        android:fontFamily="@font/nunitosans_regular"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_review_author"
+        tools:text="10.0" />
+
+    <TextView
+        android:id="@+id/tv_review_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_middle"
+        android:justificationMode="inter_word"
+        android:layout_marginRight="7dp"
+        android:fontFamily="@font/nunitosans_regular"
+        android:lineSpacingExtra="4dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_review_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/tv_review_author"
+        tools:text="Lorem Ipsum" />
+
+    <View
+        android:id="@+id/view_separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/spacing_middle"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_review_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_review_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

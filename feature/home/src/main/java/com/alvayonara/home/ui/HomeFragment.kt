@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         val clickListener = object : HomeAdapter.OnClickListener {
-            override fun onClickMovie(movieId: String) {
+            override fun onClickMovie(movieId: Int) {
                 (requireActivity() as Navigator).goto(
                     generateDeeplinkUri(DETAIL, movieId),
                     navigation.main_navigation

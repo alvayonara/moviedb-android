@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="ImageStyle_Circle">
         <item name="cornerSize">50%</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
     <!-- Progress Bar -->
+
     <style name="ProgressBar">
         <item name="android:indeterminate">true</item>
         <item name="android:indeterminateTintMode">src_atop</item>
@@ -23,12 +25,14 @@
     </style>
 
     <!-- Image -->
+
     <style name="ImageStyle_Corners_Rounded">
         <item name="cornerSize">@dimen/spacing_middle</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
     <!-- Text -->
+
     <style name="TextContent">
         <item name="android:fontFamily">@font/nunitosans_regular</item>
     </style>

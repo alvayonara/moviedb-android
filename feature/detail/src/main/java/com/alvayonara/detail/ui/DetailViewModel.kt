@@ -24,16 +24,13 @@ class DetailViewModel @Inject constructor(
     private val _detail = MutableLiveData<DetailEvent>()
     val detail: LiveData<DetailEvent> = _detail
 
-    private val _reviewNext = MutableLiveData<ReviewNextEvent>()
-    val reviewNext: LiveData<ReviewNextEvent> = _reviewNext
-
     fun getDetail(movieId: Int) {
         val disposable = Observable.zip(
             getMovieDetailUseCase.invoke(movieId),
+            getVideoUseCase.invoke(movieId),
             getReviewUseCase.invoke(movieId, 1),
-            getVideoUseCase.invoke(movieId)
-        ) { detail, review, video ->
-            DetailData(detail, review, video)
+        ) { detail, video, review ->
+            DetailData(detail, video, review)
         }.doOnSubscribe { _detail.postValue(DetailEvent.Loading) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -45,29 +42,10 @@ class DetailViewModel @Inject constructor(
         _compositeDisposable.add(disposable)
     }
 
-    fun getReviewNext(movieId: Int, page: Int) {
-        val disposable = getReviewUseCase.invoke(movieId, page)
-            .doOnSubscribe { _reviewNext.postValue(ReviewNextEvent.Loading) }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                _reviewNext.postValue(ReviewNextEvent.Success(it))
-            }, {
-                _reviewNext.postValue(ReviewNextEvent.Failed(it))
-            })
-        _compositeDisposable.add(disposable)
-    }
-
     sealed class DetailEvent {
         object Loading : DetailEvent()
         data class Success(val data: DetailData) : DetailEvent()
         data class Failed(val data: Throwable) : DetailEvent()
-    }
-
-    sealed class ReviewNextEvent {
-        object Loading : ReviewNextEvent()
-        data class Success(val data: Review) : ReviewNextEvent()
-        data class Failed(val data: Throwable) : ReviewNextEvent()
     }
 
     override fun onCleared() {

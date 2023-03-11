@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/woodsmoke"
+    android:paddingHorizontal="@dimen/spacing_mxlarge"
+    android:paddingBottom="24dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_information_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_shark_rounded_20dp"
+        android:padding="@dimen/spacing_smlarge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_header_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunitosans_extrabold"
+            android:text="@string/complete_info"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_header_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/nunitosans_regular"
+            android:text="@string/title"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size_10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header_overview" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:lineHeight="@dimen/text_size_16sp"
+            android:maxLines="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header_title"
+            tools:text="Lorem Ipsum" />
+
+        <TextView
+            android:id="@+id/tv_header_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/nunitosans_regular"
+            android:text="@string/status"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size_10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:lineHeight="@dimen/text_size_16sp"
+            android:maxLines="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header_status"
+            tools:text="Lorem Ipsum" />
+
+        <TextView
+            android:id="@+id/tv_header_language"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/nunitosans_regular"
+            android:text="@string/language"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size_10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_status" />
+
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunitosans_semibold"
+            android:lineHeight="@dimen/text_size_16sp"
+            android:maxLines="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header_language"
+            tools:text="Lorem Ipsum" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
