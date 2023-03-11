@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alvayonara.common.extension.gone
 import com.alvayonara.common.extension.scrollToBottom
+import com.alvayonara.common.extension.uppercaseFirstLetter
 import com.alvayonara.common.extension.visible
 import com.alvayonara.common.moviedomain.Result
 import com.alvayonara.common.utils.DisableItemAnimator
@@ -60,7 +62,14 @@ class MoviesFragment : Fragment() {
     }
 
     private fun setupView() {
-        args.let { viewModel.getInitialDiscoverMovies() }
+        args.let { type ->
+            requireBinding().apply {
+                tvMovieType.text = type.movieType.name.uppercaseFirstLetter()
+                ivBack.setOnClickListener { findNavController().navigateUp() }
+            }
+
+            viewModel.getInitialDiscoverMovies()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -72,7 +81,7 @@ class MoviesFragment : Fragment() {
                 )
             }, {
                 scrollToBottom()
-            })
+            }).apply { setHasStableIds(false) }
             adapter = moviesAdapter
             layoutManager =
                 LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)

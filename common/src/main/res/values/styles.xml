@@ -12,9 +12,9 @@
         <item name="android:indeterminateTint">@color/grey_20</item>
     </style>
 
-    <style name="ProgressBar.26">
-        <item name="android:layout_width">@dimen/spacing_mxlarge</item>
-        <item name="android:layout_height">@dimen/spacing_mxlarge</item>
+    <style name="ProgressBar.32">
+        <item name="android:layout_width">@dimen/spacing_xlarge</item>
+        <item name="android:layout_height">@dimen/spacing_xlarge</item>
     </style>
 
     <style name="ProgressBar.45">

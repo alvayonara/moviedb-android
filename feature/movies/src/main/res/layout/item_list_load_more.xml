@@ -8,7 +8,7 @@
     android:paddingVertical="@dimen/spacing_large">
 
     <ProgressBar
-        style="@style/ProgressBar.26"
+        style="@style/ProgressBar.32"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

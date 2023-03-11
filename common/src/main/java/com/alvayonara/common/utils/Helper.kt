@@ -5,6 +5,10 @@ import android.net.Uri
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
+/**
+ * @param text text that will be convert
+ * @return return parsed text in Uri format
+ */
 fun parseToUri(text: String): Uri = Uri.parse(text)
 
 /**

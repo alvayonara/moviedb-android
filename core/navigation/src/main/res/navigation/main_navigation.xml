@@ -34,9 +34,9 @@
 
         <argument
             android:name="movieId"
-            app:argType="integer" />
+            app:argType="string" />
         <deepLink
             android:id="@+id/deepLink_detail"
-            app:uri="movieDB://detail/{movieId}" />
+            app:uri="movieDB://detail/{movieType}" />
     </fragment>
 </navigation>
