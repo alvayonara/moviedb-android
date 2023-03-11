@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
         getHomeData()
     }
 
-    fun getHomeData() {
+    private fun getHomeData() {
         val disposable = Observable.zip(
             getDiscoverMovieListUseCase.invoke(),
             getTrendingMovieListUseCase.invoke(),

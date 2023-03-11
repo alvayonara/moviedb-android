@@ -7,12 +7,12 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 interface GetReviewUseCase {
-    fun invoke(movieId: String, page: Int): Observable<Review>
+    fun invoke(movieId: Int, page: Int): Observable<Review>
 }
 
 class GetReviewUseCaseImpl @Inject constructor(
     private val detailRepository: DetailRepository
 ) : GetReviewUseCase {
-    override fun invoke(movieId: String, page: Int): Observable<Review> =
+    override fun invoke(movieId: Int, page: Int): Observable<Review> =
         detailRepository.getReview(movieId, page)
 }

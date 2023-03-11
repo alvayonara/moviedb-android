@@ -27,7 +27,7 @@ class DetailViewModel @Inject constructor(
     private val _reviewNext = MutableLiveData<ReviewNextEvent>()
     val reviewNext: LiveData<ReviewNextEvent> = _reviewNext
 
-    fun getDetail(movieId: String) {
+    fun getDetail(movieId: Int) {
         val disposable = Observable.zip(
             getMovieDetailUseCase.invoke(movieId),
             getReviewUseCase.invoke(movieId, 1),
@@ -45,7 +45,7 @@ class DetailViewModel @Inject constructor(
         _compositeDisposable.add(disposable)
     }
 
-    fun getReviewNext(movieId: String, page: Int) {
+    fun getReviewNext(movieId: Int, page: Int) {
         val disposable = getReviewUseCase.invoke(movieId, page)
             .doOnSubscribe { _reviewNext.postValue(ReviewNextEvent.Loading) }
             .subscribeOn(Schedulers.io())

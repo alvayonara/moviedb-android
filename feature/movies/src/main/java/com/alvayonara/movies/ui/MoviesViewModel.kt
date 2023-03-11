@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
 import com.alvayonara.common.moviedomain.MovieType
+import com.alvayonara.common.moviedomain.MovieType.DISCOVER
 import com.alvayonara.movies.usecase.GetDiscoverMovieListPaginationUseCase
 import com.alvayonara.movies.usecase.GetTrendingMovieListPaginationUseCase
 import io.reactivex.disposables.CompositeDisposable
@@ -22,53 +23,99 @@ class MoviesViewModel @Inject constructor(
     private val _movies = MutableLiveData<MoviesEvent>()
     val movie: LiveData<MoviesEvent> = _movies
 
-    private val _movieType = MutableLiveData<MovieType>()
-    val movieType: LiveData<MovieType> = _movieType
+    private val _movieState = MutableLiveData<MoviesState>()
+    val moviesState: LiveData<MoviesState> = _movieState
 
-    init {
-        _movieType.let { movieType ->
-            if (movieType.equals(MovieType.DISCOVER)) {
-                getDiscoverMovies()
-            } else {
-                getTrendingMovies()
-            }
-        }
-    }
+    private var _currentPage: Int = 1
+    private var _movieType: MovieType? = null
 
-    fun setMovieType(movieType: MovieType) {
-        this._movieType.value = movieType
-    }
-
-    fun getDiscoverMovies(page: Int = 1) {
+    fun getInitialDiscoverMovies(page: Int = _currentPage) {
         val disposable = getDiscoverMovieListPaginationUseCase.invoke(page)
             .doOnSubscribe { _movies.postValue(MoviesEvent.Loading) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                _movies.postValue(MoviesEvent.Success(it))
+                _movies.postValue(MoviesEvent.Success(it.results))
             }, {
                 _movies.postValue(MoviesEvent.Failed(it))
             })
         _compositeDisposable.add(disposable)
     }
 
-    fun getTrendingMovies(page: Int = 1) {
+    fun getInitialTrendingMovies(page: Int = _currentPage) {
         val disposable = getTrendingMovieListPaginationUseCase.invoke(page)
             .doOnSubscribe { _movies.postValue(MoviesEvent.Loading) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                _movies.postValue(MoviesEvent.Success(it))
+                _movies.postValue(MoviesEvent.Success(it.results))
             }, {
                 _movies.postValue(MoviesEvent.Failed(it))
             })
         _compositeDisposable.add(disposable)
+    }
+
+    fun getNextDiscoverMovies(page: Int = _currentPage + 1) {
+        val disposable = getDiscoverMovieListPaginationUseCase.invoke(page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _currentPage = it.page
+                _movieState.value = MoviesState.BottomHide
+                _movies.postValue(MoviesEvent.Success(it.results))
+            }, {
+                _movies.postValue(MoviesEvent.Failed(it))
+            })
+        _compositeDisposable.add(disposable)
+    }
+
+    fun getNextTrendingMovies(page: Int = _currentPage + 1) {
+        val disposable = getTrendingMovieListPaginationUseCase.invoke(page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _currentPage = it.page
+                _movies.postValue(MoviesEvent.Success(it.results))
+            }, {
+                _movies.postValue(MoviesEvent.Failed(it))
+            })
+        _compositeDisposable.add(disposable)
+        _movieState.value = MoviesState.BottomHide
+    }
+
+    fun loadMore() {
+        _movieState.value = MoviesState.BottomLoading
+        getNextDiscoverMovies()
+
+        _movieType?.let {
+//            getMovies(it, { getNextDiscoverMovies() }, { getNextTrendingMovies() })
+        }
+    }
+
+    fun getMovies(
+        movieType: MovieType,
+        discover: () -> Unit = { getInitialDiscoverMovies() },
+        trending: () -> Unit = { getInitialTrendingMovies() }
+    ) {
+        _movieType = movieType
+        _movieType?.let { movie ->
+            if (movie == DISCOVER) {
+                discover
+            } else {
+                trending
+            }
+        }
     }
 
     sealed class MoviesEvent {
         object Loading : MoviesEvent()
         data class Success(val data: List<Result>) : MoviesEvent()
         data class Failed(val data: Throwable) : MoviesEvent()
+    }
+
+    sealed class MoviesState {
+        object BottomLoading : MoviesState()
+        object BottomHide : MoviesState()
     }
 
     override fun onCleared() {

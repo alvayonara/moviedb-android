@@ -11,11 +11,11 @@ import retrofit2.http.Query
 
 interface DetailService {
     @GET("movie/{movieId}")
-    fun getMovieDetail(@Path("movieId") movieId: String): Observable<MovieDetailResponse>
+    fun getMovieDetail(@Path("movieId") movieId: Int): Observable<MovieDetailResponse>
 
     @GET("movie/{movieId}/reviews")
-    fun getReview(@Path("movieId") movieId: String, @Query("page") page: Int): Observable<ReviewResponse>
+    fun getReview(@Path("movieId") movieId: Int, @Query("page") page: Int): Observable<ReviewResponse>
 
     @GET("movie/{movieId}/videos")
-    fun getVideo(@Path("movieId") movieId: String): Observable<VideoResponse>
+    fun getVideo(@Path("movieId") movieId: Int): Observable<VideoResponse>
 }
