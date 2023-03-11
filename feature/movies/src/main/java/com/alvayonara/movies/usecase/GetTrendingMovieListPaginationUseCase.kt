@@ -1,18 +1,17 @@
 package com.alvayonara.movies.usecase
 
+import com.alvayonara.common.moviedomain.Movie
 import com.alvayonara.movies.list.MoviesRepository
 import io.reactivex.Observable
-import io.reactivex.Single
 import javax.inject.Inject
-import com.alvayonara.common.moviedomain.Result as ResultMovie
 
 interface GetTrendingMovieListPaginationUseCase {
-    fun invoke(page: Int): Observable<List<ResultMovie>>
+    fun invoke(page: Int): Observable<Movie>
 }
 
 class GetTrendingMovieListPaginationUseCaseImpl @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) : GetTrendingMovieListPaginationUseCase {
-    override fun invoke(page: Int): Observable<List<ResultMovie>> =
-        moviesRepository.getTrendingMovie(page).map { it.results }
+    override fun invoke(page: Int): Observable<Movie> =
+        moviesRepository.getTrendingMovie(page)
 }

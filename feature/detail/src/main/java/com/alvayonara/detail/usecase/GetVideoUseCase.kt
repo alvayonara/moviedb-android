@@ -7,13 +7,13 @@ import javax.inject.Inject
 import com.alvayonara.detail.video.Result as VideoResult
 
 interface GetVideoUseCase {
-    fun invoke(movieId: String): Observable<VideoResult>
+    fun invoke(movieId: Int): Observable<VideoResult>
 }
 
 class GetVideoUseCaseImpl @Inject constructor(
     private val detailRepository: DetailRepository
 ) : GetVideoUseCase {
-    override fun invoke(movieId: String): Observable<VideoResult> =
+    override fun invoke(movieId: Int): Observable<VideoResult> =
         detailRepository.getVideo(movieId)
             .map { it.results.firstOrNull() }
 }

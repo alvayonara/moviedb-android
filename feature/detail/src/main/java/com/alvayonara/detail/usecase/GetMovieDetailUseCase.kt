@@ -7,11 +7,11 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 interface GetMovieDetailUseCase {
-    fun invoke(movieId: String): Observable<MovieDetail>
+    fun invoke(movieId: Int): Observable<MovieDetail>
 }
 
 class GetMovieDetailUseCaseImpl @Inject constructor(
     private val detailRepository: DetailRepository
 ): GetMovieDetailUseCase {
-    override fun invoke(movieId: String): Observable<MovieDetail> = detailRepository.getMovieDetail(movieId)
+    override fun invoke(movieId: Int): Observable<MovieDetail> = detailRepository.getMovieDetail(movieId)
 }

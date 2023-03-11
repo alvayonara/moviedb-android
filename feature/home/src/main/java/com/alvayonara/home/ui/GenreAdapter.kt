@@ -9,9 +9,7 @@ import com.alvayonara.home.ui.GenreAdapter.GenreViewHolder
 import com.alvayonara.home.ui.GenreViews.GenreView
 import com.alvayonara.moviedb_android.home.databinding.ItemListGenreBinding
 
-class GenreAdapter(
-    private val clickListener: HomeAdapter.OnClickListener
-) : ListAdapter<GenreViews, GenreViewHolder>(GenreDiffCallback()) {
+class GenreAdapter() : ListAdapter<GenreViews, GenreViewHolder>(GenreDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder =
         GenreViewHolder(

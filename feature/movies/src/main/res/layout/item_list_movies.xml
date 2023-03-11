@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_user"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/card_view_130"
+    android:layout_marginBottom="@dimen/spacing_large"
+    android:elevation="0dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="@dimen/spacing_middle">
+
+    <ImageView
+        android:id="@+id/iv_poster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@color/shark_88"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/alva_yonara_puramandya" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_large">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextContent.Heading.16.White"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_mxlarge"
+            android:ellipsize="end"
+            android:maxLines="3"
+            app:layout_constraintEnd_toStartOf="@+id/iv_poster_inner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Alva" />
+
+        <TextView
+            android:id="@+id/tv_release_date"
+            style="@style/TextContent.10.White.EllipsizeEnd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small_mid"
+            android:layout_marginEnd="@dimen/spacing_mxlarge"
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@+id/iv_poster_inner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="Release Date" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_poster_inner"
+            android:layout_width="@dimen/image_100"
+            android:layout_height="@dimen/image_100"
+            android:padding="@dimen/spacing_xsmall"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"
+            app:strokeColor="@color/white"
+            app:strokeWidth="@dimen/spacing_xsmall"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/alva_yonara_puramandya" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

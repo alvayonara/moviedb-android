@@ -70,7 +70,7 @@ class HomeAdapter(
         private val binding: LayoutGenreBinding
     ) : ViewHolder(binding.root) {
 
-        private val genreAdapter = GenreAdapter(clickListener)
+        private val genreAdapter = GenreAdapter()
 
         init {
             binding.rvGenre.apply {
@@ -81,7 +81,6 @@ class HomeAdapter(
         }
 
         fun bind(data: GenreSection) {
-            println("genres->: ${data}")
             genreAdapter.submitList(data.genreViews)
         }
     }
