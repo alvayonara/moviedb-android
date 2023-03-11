@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="overview">Overview</string>
+    <string name="complete_info">Complete Info</string>
+    <string name="title">Title</string>
+    <string name="status">Status</string>
+    <string name="video">Video</string>
+    <string name="review">Review</string>
+    <string name="show_all_reviews">Show All Reviews</string>
+    <string name="language">Language</string>
+</resources>

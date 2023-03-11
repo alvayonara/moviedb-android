@@ -34,4 +34,6 @@ dependencies {
     // ViewModel KTX
     api "androidx.activity:activity-ktx:$activityKtxVersion"
     api "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+
+    api "com.pierfrancescosoffritti.androidyoutubeplayer:core:$youtubePlayerVersion"
 }

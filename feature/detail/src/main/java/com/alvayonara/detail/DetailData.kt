@@ -6,6 +6,6 @@ import com.alvayonara.detail.video.Result
 
 data class DetailData(
     val movieDetail: MovieDetail,
-    val review: Review,
-    val video: Result
+    val video: Result,
+    val review: Review
 )

@@ -44,4 +44,5 @@ ext {
     chuckerVersion = '3.5.2'
     rxJavaVersion = '2.2.19'
     rxBindingVersion = '2.2.0'
+    youtubePlayerVersion = '11.1.0'
 }
