@@ -3,16 +3,15 @@ package com.alvayonara.movies.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavDirections
 import com.alvayonara.common.moviedomain.MovieType
 import com.alvayonara.common.moviedomain.MovieType.DISCOVER
+import com.alvayonara.common.moviedomain.Result
 import com.alvayonara.movies.usecase.GetDiscoverMovieListPaginationUseCase
 import com.alvayonara.movies.usecase.GetTrendingMovieListPaginationUseCase
-import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Inject
-import com.alvayonara.common.moviedomain.Result
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(
     private val getDiscoverMovieListPaginationUseCase: GetDiscoverMovieListPaginationUseCase,
@@ -29,7 +28,12 @@ class MoviesViewModel @Inject constructor(
     private var _currentPage: Int = 1
     private var _movieType: MovieType? = null
 
-    fun getInitialDiscoverMovies(page: Int = _currentPage) {
+    fun setMovieType(movieType: MovieType) {
+        this._movieType = movieType
+        getMovies()
+    }
+
+    private fun getInitialDiscoverMovies(page: Int = _currentPage) {
         val disposable = getDiscoverMovieListPaginationUseCase.invoke(page)
             .doOnSubscribe { _movies.postValue(MoviesEvent.Loading) }
             .subscribeOn(Schedulers.io())
@@ -42,7 +46,7 @@ class MoviesViewModel @Inject constructor(
         _compositeDisposable.add(disposable)
     }
 
-    fun getInitialTrendingMovies(page: Int = _currentPage) {
+    private fun getInitialTrendingMovies(page: Int = _currentPage) {
         val disposable = getTrendingMovieListPaginationUseCase.invoke(page)
             .doOnSubscribe { _movies.postValue(MoviesEvent.Loading) }
             .subscribeOn(Schedulers.io())
@@ -55,7 +59,7 @@ class MoviesViewModel @Inject constructor(
         _compositeDisposable.add(disposable)
     }
 
-    fun getNextDiscoverMovies(page: Int = _currentPage + 1) {
+    private fun getNextDiscoverMovies(page: Int = _currentPage + 1) {
         val disposable = getDiscoverMovieListPaginationUseCase.invoke(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -69,7 +73,7 @@ class MoviesViewModel @Inject constructor(
         _compositeDisposable.add(disposable)
     }
 
-    fun getNextTrendingMovies(page: Int = _currentPage + 1) {
+    private fun getNextTrendingMovies(page: Int = _currentPage + 1) {
         val disposable = getTrendingMovieListPaginationUseCase.invoke(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -85,25 +89,17 @@ class MoviesViewModel @Inject constructor(
 
     fun loadMore() {
         _movieState.value = MoviesState.BottomLoading
-        getNextDiscoverMovies()
-
-        _movieType?.let {
-//            getMovies(it, { getNextDiscoverMovies() }, { getNextTrendingMovies() })
-        }
+        getMovies({ getNextDiscoverMovies() }, { getNextTrendingMovies() })
     }
 
-    fun getMovies(
-        movieType: MovieType,
+    private fun getMovies(
         discover: () -> Unit = { getInitialDiscoverMovies() },
         trending: () -> Unit = { getInitialTrendingMovies() }
     ) {
-        _movieType = movieType
-        _movieType?.let { movie ->
-            if (movie == DISCOVER) {
-                discover
-            } else {
-                trending
-            }
+        if (_movieType == DISCOVER) {
+            discover()
+        } else {
+            trending()
         }
     }
 
