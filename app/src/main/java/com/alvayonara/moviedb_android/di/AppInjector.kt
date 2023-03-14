@@ -4,7 +4,6 @@ import com.alvayonara.detail.di.DetailComponent
 import com.alvayonara.home.di.HomeComponent
 import com.alvayonara.movies.di.MoviesComponent
 import com.alvayonara.network.di.NetworkComponent
-import com.alvayonara.network.di.NetworkInjector
 import javax.inject.Scope
 
 object AppInjector {
@@ -18,7 +17,7 @@ object AppInjector {
         setupDetailComponent()
 
         component = DaggerAppComponent.builder()
-            .networkComponent(NetworkInjector.component)
+            .networkComponent(NetworkComponent.component)
             .homeComponent(HomeComponent.component)
             .moviesComponent(MoviesComponent.component)
             .detailComponent(DetailComponent.component)
@@ -26,7 +25,7 @@ object AppInjector {
     }
 
     private fun setupNetworkComponent() {
-        NetworkInjector.init()
+        NetworkComponent.init()
     }
 
     private fun setupHomeComponent() {
