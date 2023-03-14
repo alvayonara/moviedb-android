@@ -68,7 +68,7 @@ class MoviesFragment : Fragment() {
                 ivBack.setOnClickListener { findNavController().navigateUp() }
             }
 
-            viewModel.getInitialDiscoverMovies()
+            viewModel.setMovieType(type.movieType)
         }
     }
 
