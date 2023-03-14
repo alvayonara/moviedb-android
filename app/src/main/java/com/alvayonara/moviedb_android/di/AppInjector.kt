@@ -9,26 +9,24 @@ import javax.inject.Scope
 
 object AppInjector {
 
-    lateinit var component: AppComponent
+    private lateinit var component: AppComponent
 
     fun generateAppComponent() {
-        val networkComponent = setupNetworkComponent()
-
+        setupNetworkComponent()
         setupHomeComponent()
         setupMoviesComponent()
         setupDetailComponent()
 
         component = DaggerAppComponent.builder()
-            .networkComponent(networkComponent)
+            .networkComponent(NetworkInjector.component)
             .homeComponent(HomeComponent.component)
             .moviesComponent(MoviesComponent.component)
             .detailComponent(DetailComponent.component)
             .build()
     }
 
-    private fun setupNetworkComponent(): NetworkComponent {
+    private fun setupNetworkComponent() {
         NetworkInjector.init()
-        return NetworkInjector.component
     }
 
     private fun setupHomeComponent() {
