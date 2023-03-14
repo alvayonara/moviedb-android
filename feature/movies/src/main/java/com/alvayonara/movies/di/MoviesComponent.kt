@@ -4,7 +4,6 @@ import com.alvayonara.common.utils.ViewModelFactory
 import com.alvayonara.movies.ui.MoviesFragment
 import com.alvayonara.movies.ui.MoviesViewModel
 import com.alvayonara.network.di.NetworkComponent
-import com.alvayonara.network.di.NetworkInjector
 import dagger.Component
 import javax.inject.Scope
 
@@ -19,7 +18,7 @@ interface MoviesComponent {
 
         fun init() {
             component = DaggerMoviesComponent.builder()
-                .networkComponent(NetworkInjector.component)
+                .networkComponent(NetworkComponent.component)
                 .moviesModule(MoviesModule())
                 .build()
         }

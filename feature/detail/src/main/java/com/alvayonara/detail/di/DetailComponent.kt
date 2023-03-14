@@ -4,7 +4,6 @@ import com.alvayonara.common.utils.ViewModelFactory
 import com.alvayonara.detail.ui.DetailFragment
 import com.alvayonara.detail.ui.DetailViewModel
 import com.alvayonara.network.di.NetworkComponent
-import com.alvayonara.network.di.NetworkInjector
 import dagger.Component
 import javax.inject.Scope
 
@@ -19,7 +18,7 @@ interface DetailComponent {
 
         fun init() {
             component = DaggerDetailComponent.builder()
-                .networkComponent(NetworkInjector.component)
+                .networkComponent(NetworkComponent.component)
                 .detailModule(DetailModule())
                 .build()
         }
